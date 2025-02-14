@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        div#mainContainer{
+            display: flex;
+            flex-direction: row;
+            width: 90%;
+            margin: auto;
+            margin-top: 3%;
+            font-family: "cc-thismanthismonster-var", sans-serif;
+            font-variation-settings: "BITE" 0, "WONK" 0, "CHEW" 0;
+
+        }
+        div.mainsecs:first-of-type{
+            width: 40%;
+            /* border: 2px solid brown; */
+        }
+        div.mainsecs{
+            width: 60%;
+            /* border: 2px solid brown; */
+        }
+        h1#mainsec-heading{
+            font-size: 80px;
+        }
+        #main-sec-title{
+            color: red;
+        }
+        #main-sec-image{
+            height: 100%;
+        }
+        #main-sec-image{
+            display: block;
+            margin: auto;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    {%extends 'base.html'%}
+    {%block content%}
+    <main>
+        <div id="mainContainer">
+            <div class="mainsecs">
+                <h1 id="mainsec-heading">Welcome to <span id="main-sec-title">MovieMania</span></h1>
+            </div>
+            <div class="mainsecs">
+                <img src="/static/images/main-sec-image.jpeg" id="main-sec-image" alt="">
+            </div>
+        </div>
+    </main>
+    {%endblock%}
+</body>
+</html>
