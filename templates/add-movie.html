@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/med7fre.css">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        div#movie-form-container{
+            width: 60%;
+            padding: 2%;
+            margin: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(90, 87, 87, 0.5));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            }
+        h3{
+            font-family: "cc-thismanthismonster-var", sans-serif;
+            font-variation-settings: "BITE" 0, "WONK" 0, "CHEW" 0;
+        }
+    </style>
+
+</head>
+<body>
+    {%extends 'base.html'%}
+    {%block content%}
+    <div id="movie-form-container"> 
+        <form action="" method="post" id="movie-form" enctype="multipart/form-data">
+            <h3>Movie Form</h3>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name = 'movie-name'>
+                <label for="floatingInput">Movie Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="number" min="1980" max="2025" class="form-control" id="floatingPassword" placeholder="Password" name = 'release-year'>
+                <label for="floatingPassword">Release Year</label>
+              </div>
+    
+                <select class="form-select mb-3" aria-label="Default select example" name = 'genre'>
+                    <option selected>Select the genre of the movie</option>
+                    <option value="action">Action</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="romance">Romance</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="drama">Drama</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="crime">Crime</option>
+                    <option value="horror">Horror</option>
+                    <option value="others">Others</option>
+                  </select>
+    
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="describe the story of the movie in a small paragraph." name = 'movie-description' maxlength="1000">
+                <label for="floatingInput">Story of movie</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name the top stars in the movie" name = 'movie-cast' maxlength="100">
+                <label for="floatingInput">Cast</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="number" min="1" max="10" class="form-control" id="floatingPassword" placeholder="Rating on Imdb website" name = 'imdb-rating'>
+                <label for="floatingPassword">IMDB Rating</label>
+              </div>
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload Poster of the movie : </label>
+                <input type="file" class="form-control" id="inputGroupFile01" name = 'poster'>
+              </div>
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload Landscape image for the movie : </label>
+                <input type="file" class="form-control" id="inputGroupFile01" name = 'landscape'>
+              </div>
+              <input type="submit" class="btn btn-info">
+        </form>
+    </div>
+    {%endblock%}
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</html>

@@ -3,27 +3,35 @@ from flask_sqlalchemy import SQLAlchemy
 import os 
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user 
 from flask_bcrypt import Bcrypt 
+from werkzeug.utils import secure_filename
+
 basedir = os.path.abspath(os.path.dirname(__file__)) 
 app = Flask(__name__) 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" +  os.path.join(basedir, "app.db") 
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 app.config["SECRET_KEY"] = "Your_secret_key" 
+UPLOAD_FOLDER = 'static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 db = SQLAlchemy(app) 
 bcrypt = Bcrypt(app) 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login" 
+
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 class Movie(db.Model , UserMixin):
     __tablename__ = "movie"
     sno = db.Column(db.Integer , primary_key = True)
-    name = db.Column(db.String(100) , nullable  = False)
-    release_year = db.Column(db.Integer , nullable = False)
-    imbd_rating = db.Column(db.Float , nullable = True)
-    genre = db.Column(db.String , nullable = False)
-    descripion = db.Column(db.String(1000) , nullable = False) 
-    cast = db.Column(db.String(100) , nullable = False)
-    poster = db.Column(db.String(2000) , nullable=False)
-    landscape = db.Column(db.String(2000) , nullable = False)
+    name = db.Column(db.String(100) )
+    release_year = db.Column(db.Integer )
+    imdb_rating = db.Column(db.Integer )
+    genre = db.Column(db.String )
+    description = db.Column(db.String(1000) ) 
+    cast = db.Column(db.String(100) )
+    poster = db.Column(db.String(2000) )
+    landscape = db.Column(db.String(2000) )
 
 class User(db.Model , UserMixin):
     __tablename__ = "users"
@@ -105,6 +113,41 @@ def logout():
 def profile(): 
     return render_template("profile.html")
 
+
+@app.route('/add_movie', methods = ['POST' ,'GET'])
+def addMovie():
+    if request.method == 'POST':
+        name = request.form.get('movie-name')
+        year = request.form.get('release-year')
+        genre = request.form.get('genre')
+        story = request.form.get('movie-description')
+        cast = request.form.get('movie-cast')
+        rating = request.form.get('imdb-rating')
+        poster = request.files['poster']
+        landscape = request.files['landscape']
+
+        # Save poster file
+        poster_filename = secure_filename(poster.filename)
+        poster_path = os.path.join(app.config['UPLOAD_FOLDER'], poster_filename)
+        poster.save(poster_path)
+
+        # Save landscape file
+        landscape_filename = secure_filename(landscape.filename)
+        landscape_path = os.path.join(app.config['UPLOAD_FOLDER'], landscape_filename)
+        landscape.save(landscape_path)        
+
+        new_movie = Movie(name = name , release_year = year , genre = genre , description = story , imdb_rating = rating , cast = cast , poster = poster_filename ,landscape = landscape_filename)
+        db.session.add(new_movie)
+        db.session.commit()
+        flash("Movie added Succesfully" , "info")
+    return render_template('add-movie.html')
+@app.route('/movies')
+def showMovies():
+    # Query all movies from the database
+    movies = Movie.query.all()
+
+    # Pass the movies to the template for rendering
+    return render_template('showMovies.html', movies=movies)
 
 
 if __name__=="__main__":

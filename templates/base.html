@@ -50,7 +50,7 @@
                 <a href="{{url_for('home')}}"><h2>Home</h2></a>
             </div>
             <div class="navbuttons">
-                <a href=""><h2>Movies</h2></a>
+                <a href="{{url_for('showMovies')}}"><h2>Movies</h2></a>
             </div>
             <div class="navbuttons">
                 <a href=""><h2>Genres</h2></a>
@@ -65,8 +65,27 @@
             <div class="navbuttons">
                 <a href="{{url_for('login')}}"><h2>Login</h2></a>
             </div>
+            <div class="navbuttons">
+                <a href="{{url_for('addMovie')}}"><h2>Add Movie</h2></a>
+            </div>
         </nav>
     </header>
+    <main class="bg-warning overflow-auto">
+        <!-- Flash Message Display -->
+        {% for category,messages in get_flashed_messages(with_categories=True) %}
+        <div
+          class="alert alert-{{category}} alert-dismissible fade show"
+          role="alert"
+        >
+          {{messages}}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+        {%endfor%}
     <div id="condiv">
         {%block content%}
         {%endblock%}
