@@ -35,19 +35,19 @@
     {%block content%}
     <br>
     <div id="movie-form-container"> 
-        <form action="" method="post" id="movie-form" enctype="multipart/form-data">
-            <h2 class="text-center display-5">Movie Form</h2>
+        <form action="{{url_for('update_movie' , sno = movie.sno)}}" method="post" id="movie-form" enctype="multipart/form-data">
+            <h2 class="text-center display-5">Movie Update Form</h2>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name = 'movie-name'>
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name = 'movie-name' value="{{movie.name}}">
                 <label for="floatingInput">Movie Name</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="number" min="1980" max="2025" class="form-control" id="floatingPassword" placeholder="Password" name = 'release-year'>
+                <input type="number" min="1980" max="2025" class="form-control" id="floatingPassword" placeholder="Password" name = 'release-year' value="{{movie.release_year}}">
                 <label for="floatingPassword">Release Year</label>
               </div>
     
-                <select class="form-select mb-3" aria-label="Default select example" name = 'genre'>
-                    <option selected>Select the genre of the movie</option>
+                <select class="form-select mb-3" aria-label="Default select example" name = 'genre' >
+                    <option selected>{{movie.genre}}</option>
                     <option value="Action">Action</option>
                     <option value="Adventure">Adventure</option>
                     <option value="Romance">Romance</option>
@@ -61,27 +61,21 @@
                   </select>
     
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="describe the story of the movie in a small paragraph." name = 'movie-description' maxlength="1000">
+                <input type="text" class="form-control" id="floatingInput" placeholder="describe the story of the movie in a small paragraph." value="{{movie.description}}" name = 'movie-description' maxlength="1000">
                 <label for="floatingInput">Story of movie</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name the top stars in the movie" name = 'movie-cast' maxlength="100">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name the top stars in the movie" name = 'movie-cast'value= "{{movie.cast}}" maxlength="100">
                 <label for="floatingInput">Cast</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="number" min="1" max="10" step="0.01" class="form-control" id="floatingPassword" placeholder="Rating on Imdb website" name = 'imdb-rating'>
+                <input type="number" min="1" max="10" class="form-control" id="floatingPassword" placeholder="Rating on Imdb website" value="{{movie.imdb_rating}}" name = 'imdb-rating'>
                 <label for="floatingPassword">IMDB Rating</label>
               </div>
-              <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupFile01">Upload Poster of the movie : </label>
-                <input type="file" class="form-control" id="inputGroupFile01" name = 'poster'>
-              </div>
-              <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupFile01">Upload Landscape image for the movie : </label>
-                <input type="file" class="form-control" id="inputGroupFile01" name = 'landscape'>
-              </div>
-              <input type="submit" class="btn btn-info">
-        </form>
+              <input type="submit" class="btn btn-info" value="Update">
+              
+            </form>
+            <p><strong style="color: red; text-decoration: none;">Currently, you can't update the images uploaded, please delete the record and upload a new one in that case.</strong></p>
     </div>
     {%endblock%}
 </body>

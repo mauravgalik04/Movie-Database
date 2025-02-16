@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Movies</title>
     <link rel="stylesheet" href="https://use.typekit.net/med7fre.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
@@ -19,10 +19,15 @@
         #small-card{
             border: 1px solid black;
             width: 90%;
+            padding: 5px;
             display: flex;
             flex-direction: row;
             margin: auto;
-            height: 200px;
+            margin-bottom: 2%;
+            height: 210px;
+            color: whitesmoke;
+            border-radius: 20px;
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.8) 100%);
         }
         #small-card-image{
             width: 20%;
@@ -32,13 +37,62 @@
             width: 30%;
             display: flex;
             flex-direction: column;
-            border: 2px solid red;
+            padding: 10px;
+            /* border: 2px solid red; */
+        }
+        .info-secs{
+            height: 50%;
         }
         #small-card-misc{
             width: 50%;
             display: flex;
             flex-direction: column;
+        } 
+        
+        .btn-grad2 {background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%)}
+         .btn-grad2 {
+            margin: 10px;
+            padding: 5px 25px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            /* box-shadow: 0 0 20px #eee; */
+            border-radius: 10px;
+            display: block;
+          }
+
+          .btn-grad2:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+                   
+        .btn-grad {background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)}
+        .btn-grad {
+            margin: 10px;
+            padding: 5px 25px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            /* box-shadow: 0 0 20px #eee; */
+            border-radius: 10px;
+            display: block;
         }
+
+        .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+        .options-sec{
+            display: flex;
+            justify-content: flex-start;
+        }
+         
     </style>
 </head>
 <body>
@@ -49,19 +103,28 @@
         {%for movie in movies%}
         <div id="small-card" class="mb-3">
             <div class="card-sec" id="small-card-image">
-                <img src="{{url_for('static' , filename = 'uploads/'+movie.poster)}}" alt="" style="width: 100%;height: 100%;">
+                <img src="{{url_for('static' , filename = 'uploads/'+movie.poster)}}" alt="" style="width: 100%;height: 100%; border-radius: 20px;">
             </div>
             <div class="card-sec" id="small-card-info">
-                <h2>{{movie.name}}</h2>
-                <p><strong>Release Year : {{movie.release_year}}</strong></p>
-                <p><strong>Genre : {{movie.genre}}</strong></p>
+                <div class="info-secs">
+                    <h4>{{movie.name}}</h4>
+                </div>
+                <div class="info-secs">
+                    <p><strong>Release Year : {{movie.release_year}}</strong></p>
+                    <p><strong>Genre : {{movie.genre.capitalize()}}</strong></p>
+                </div>
             </div>
             <div class="card-sec" id="small-card-misc">
-                <div class="small-card-mis-sec"> <p>{{movie.description}}</p></div>
-                <div class="small-card-mis-sec">
-                    <h5><a href="">Add to watchlist <i class="fa-solid fa-film" style="color: #ff0000;"></i></a></h5>
-                    <a href=""><button class="btn btn-warning">See more</button></a>
-                    
+                <div class="small-card-mis-sec mb-0"> <p>{{movie.description}}</p></div>
+                <div class="small-card-mis-sec ">
+                    <button class="btn-grad2"><a href="">Add to watchlist <i class="fa-solid fa-film" style="color: #ff0000;"></i></a></button>
+                    <div class="options-sec"> 
+                        <a href="{{url_for('featured_movie' , sno=movie.sno)}}"><button class="btn-grad">See more</button></a>
+                        {%if current_user.role == "admin"%}
+                        <a href="{{url_for('update_movie' , sno = movie.sno)}}"><button class="adminControls btn-grad" id="update">Update</button></a>
+                        <a href="{{url_for('delete_movie' , sno = movie.sno)}}" onclick="return confirm('Are you sure you want to delete this Movie?')"><button class="adminControls btn-grad" id="delete">Delete</button></a>
+                        {%endif%}
+                    </div>
                 </div>
             </div>
         </div>
