@@ -1,0 +1,106 @@
+body{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-image: url_for('static' , filename = 'images/'+image);
+}
+.login-container {
+background: rgba(255, 255, 255, 0.1);
+padding: 30px;
+border-radius: 18px;
+backdrop-filter: blur(5px);
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+max-width: 400px;
+width: 60%;
+margin: auto;
+text-align: left; /* Aligning text and form fields to the left */
+}
+
+.login-container h2 {
+font-weight: bold;
+margin-bottom: 20px;
+color: rgb(220, 220, 220);
+text-align: left; /* Ensuring the heading is aligned left */
+}
+
+.form-group {
+margin-bottom: 15px; /* Adds space between form fields */
+}
+
+.form-group label {
+color: rgb(220, 220, 220);
+font-weight: bold;
+}
+
+.form-group input {
+width: 100%;
+padding: 10px;
+margin-top: 5px;
+border-radius: 8px;
+border: 1px solid #ddd;
+}
+
+.btn-custom {
+width: 100%;
+padding: 10px;
+background: linear-gradient(to right, #ff7e5f, #feb47b);
+border: none;
+color: white;
+font-weight: bold;
+border-radius: 25px;
+margin-bottom: 10px;
+}
+
+.btn-register {
+width: 100%;
+padding: 10px;
+background: linear-gradient(to right, #ff7e5f, #feb47b);
+border: none;
+color: white;
+font-weight: bold;
+border-radius: 25px;
+}
+#background{
+width: 100%;
+height: 1vh;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 0;
+}
+#background img{
+width: 100%;
+}
+select{
+border-radius: 10px;
+width: 100%;
+padding: 2px 7px;
+}
+.btn-grad2 {background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%)}
+.btn-grad2 {
+position: absolute;
+z-index: 100;
+top: 10px;
+left: 5px;
+margin: 10px;
+padding: 5px 25px;
+text-align: center;
+text-decoration: none;
+text-transform: uppercase;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;            
+/* box-shadow: 0 0 20px #eee; */
+border-radius: 10px;
+display: block;
+}
+.btn-grad2 a{
+text-decoration: none;
+color: white;
+}
+
+.btn-grad2:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}

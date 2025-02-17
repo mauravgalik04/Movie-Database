@@ -1,0 +1,149 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+div#mainContainer{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    gap: 2%;
+    margin: auto;
+    margin-top: 3%;
+}
+div#mainContainer h1{
+    font-family: "cc-thismanthismonster-var", sans-serif;
+    font-variation-settings: "BITE" 0, "WONK" 0, "CHEW" 0;
+}
+div.mainsecs:first-of-type{
+    width: 40%;
+    /* border: 2px solid brown; */
+}
+div.mainsecs{
+    width: 60%;
+    /* border: 2px solid brown; */
+}
+h1#mainsec-heading{
+    font-size: 80px;
+}
+#main-sec-title{
+    color: red;
+}
+#main-sec-image{
+    display: block;
+    margin: auto;
+    width: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+#main-sec-image{
+    display: block;
+    margin: auto;
+    height: 500px;
+}
+        /* Movie Carousel */
+.movie-carousel {
+    padding: 5rem 0;
+    background-color: var(--bg-gray);
+    overflow: hidden;
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 30s linear infinite;
+}
+
+.carousel-card {
+    flex: 0 0 300px;
+    background: var(--bg-light);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.carousel-card:hover {
+    transform: translateY(-10px);
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-content {
+    padding: 1.5rem;
+}
+
+.carousel-content h3 {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.carousel-content p {
+    color: var(--text-gray);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-300px * 4 - 8rem));
+    }
+}
+/* Features Section */
+.features {
+    padding: 5rem 0;
+    background-color: var(--primary-color);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-white);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: var(--bg-dark-blue);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2); /* Gold Glow */
+}
+
+.feature-icon {
+    color: var(--accent-gold);
+    margin-bottom: 1.5rem;
+}
+
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-white);
+}
+
+.feature-card p {
+    color: var(--text-light-gray);}

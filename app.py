@@ -5,6 +5,7 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from flask_bcrypt import Bcrypt 
 from werkzeug.utils import secure_filename
 from functools import wraps
+from random import choice
 
 basedir = os.path.abspath(os.path.dirname(__file__)) 
 app = Flask(__name__) 
@@ -63,14 +64,17 @@ with app.app_context():
         admin11  = User(username = "movieAdmin" , email = "admin24@gmail.com" ,role = "admin" ) 
         admin11.set_password('adminkey24')
         db.session.add(admin11)
-        db.session.commit()  
+        db.session.commit()
+
+
+login_images = ['login-1.jpg' , 'login-2.jpg' , 'login-3.jpg' , 'login-4.jpg' , 'login-5.jpg' , 'login-6.jpg' , 'login-7.jpg' , 'login-8.jpg' , 'login-9.jpg','login-10.jpg'] 
+
+
 @app.route("/") 
 def landing(): 
-    return render_template("index.html") 
-
-
-@app.route("/login", methods=["GET", "POST"]) 
-def login(): 
+    return render_template("index.html", image = choice(login_images)) 
+@app.route("/login", methods=["GET", "POST"] ) 
+def login():
     if request.method == "POST": 
         email = request.form.get("email") 
         password = request.form.get("password") 
@@ -82,7 +86,7 @@ def login():
             return redirect(url_for("landing")) 
         else: 
             flash("Invalid credentials!", "danger") 
-    return render_template("login.html") 
+    return render_template("login.html" , image = choice(login_images)) 
 
 
 @app.route("/register", methods=["GET", "POST"]) 
@@ -106,7 +110,7 @@ def register():
         db.session.commit() 
         flash("Registration successful! Please log in.", "success") 
         return redirect(url_for("login")) 
-    return render_template("/register.html") 
+    return render_template("/register.html" , image = choice(login_images)) 
 
 
 @app.route("/logout") 
@@ -117,10 +121,6 @@ def logout():
     return redirect(url_for("landing")) 
 
 
-@app.route("/profile") 
-@login_required 
-def profile(): 
-    return render_template("profile.html")
 
 @app.route('/add_movie', methods = ['POST' ,'GET'])
 @admin_required
@@ -182,5 +182,52 @@ def featured_movie(sno):
     movie = Movie.query.get(sno)
     return render_template('feature-movie.html' , movie = movie)
 
+user_data = {
+    "name": "Gaurav",
+    "photo": "/static/images/user-image.jpeg",
+    "tagline": '"Life is like a movie, write your own ending" - Kermit the Frog',
+    "stats": {"watched": 847, "rating": 4.8},
+    "about": {
+        "location": "Rajpura, Punjab",
+        "joined": "February 2025",
+        "email": "malik24x07@gmail.com",  # Replace with a valid email for testing
+        "link": "@mauravgalik04",
+    },
+    "genres": [
+        {"name": "Sci-Fi", "progress": 85, "count": 234},
+        {"name": "Thriller", "progress": 72, "count": 198},
+        {"name": "Drama", "progress": 65, "count": 179},
+    ],
+    "activity": [
+        {
+            "type": "review",
+            "title": "Reviewed Oppenheimer",
+            "time": "2 hours ago",
+            "text": '"A masterpiece that explores the moral complexities of scientific achievement. Nolan at his finest."',
+            "rating": 5,
+        },
+        {
+            "type": "list",
+            "title": "Created a new list",
+            "time": "Yesterday",
+            "text": '"Best Sci-Fi Movies of 2024"',
+            "movies": ["Dune: Part Two", "The Creator", "+3 more"],
+        },
+        {
+            "type": "watch",
+            "title": "Watched Poor Things",
+            "time": "2 days ago",
+            "rating": 4,
+        },
+    ],
+}
+
+
+
+
+@app.route("/profile") 
+@login_required 
+def profile(): 
+    return render_template("profile.html" , user = user_data)
 if __name__=="__main__":
     app.run(debug=True)

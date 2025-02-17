@@ -1,0 +1,20 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+div#movie-form-container{
+    width: 60%;
+    padding: 2%;
+    margin: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(90deg, #e0eafc, rgba(192, 187, 187, 0.916)  );          
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    }
+h2{
+    font-family: "cc-thismanthismonster-var", sans-serif;
+    font-variation-settings: "BITE" 0, "WONK" 0, "CHEW" 0;
+}

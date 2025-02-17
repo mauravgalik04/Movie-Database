@@ -16,149 +16,53 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/med7fre.css">
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'css/feature-movie.css')}}">
 
-    <style>
-        #feature-card{
-            /* height: 400px; */
-            width: 80%;
-            border: 2px solid red;
-        }
-        #feature-card-header{
-            height: 10%;
-        }
-        #feature-card-body{
-            border: 1px solid black;
-            height: 90%;
-            display: flex;
-            flex-direction: row;
-        }
-        .feature-card-sec{
-            width: 37.5%;
-            border: 1px solid red;
-        }
-        #feature-card-slider{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            align-content: center;
-            border: 2px solid purple;
-        }
-        .feature-card-poster{
-            width: 25%;
-            border: 1px solid yellow;
-            background-image: url(/static/images/spiderman-poster.jpg);
-            background-size: cover;
-        }
-        #feature-card-header{
-            display: flex;
-            flex-direction: row;
-        }
-        #feature-card-header-title{
-            display: flex;
-            flex-direction: column;
-        }
-        #movie-name,#release-year{
-            font-size:250%;
-            font-family: "cc-thismanthismonster-var", sans-serif;
-            font-variation-settings: "BITE" 0, "WONK" 0, "CHEW" 0;
-            margin-bottom: 0;
-        }
-        .feature-card-header-sec{
-            border: 2px solid black;
-        }
-        .ratings-sec{
-            width: 25%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 5%;
-        }
-        .name-sec{
-            width: 60%;
-        }
-        #feature-card-genre{
-            width: 25%;
-        }
-        #feature-card-description{
-            display: flex;
-            flex-direction: column;
-        }
-        #description{
-            height: 70%;
-            /* background-color: brown; */
-        }
-        #cast{
-            height: 20%;
-        }
-        #add-to-watchlist{
-            height: 10%;
-            text-align: right;
-        }
-    </style>
 </head>
 <body>
     <div id="feature-card" class="card m-auto">
-        <div id="feature-card-header">
-            <div class="feature-card-header-sec name-sec" id="feature-card-header-title">
-                <div id="movie-name"><h3>{{movie.name}}</h3></div>
-                <div id="release-year">{{movie.release_year}}</div>
-            </div>
-            <div class="feature-card-header-sec" id="feature-card-genre">
-                <h3>Genre</h3>
-                <h2>{{movie.genre}}</h2>
-            </div>
-            <div class="feature-card-header-sec ratings-sec">
-                <div class="ratings imdb-rating">
-                    <div class="rating-card">
-                        <h4>IMDB Rating</h4>
-                        <div>
-                            <i class="fa-solid fa-star" style="color: #ff0000;"></i> {{movie.imdb_rating}}/10
-                        </div>
-                    </div>
-                </div>
-                <div class="ratings your-rating">
-                    <h4>Your Rating</h4>
-                    <div>
-                         <a href=""><i class="fa-solid fa-star" style="color: #ff0000;"></i> Rate</a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="feature-card-body">
-            <div class="feature-card-sec feature-card-poster">
-                <img src="{{url_for('static' , filename = 'uploads/'+movie.poster)}}" alt="" style="height: 400px; display: block; margin: auto;">
+            
+            <div class="feature-card-left">
+                <div class=" feature-card-poster">
+                    <img src="{{url_for('static' , filename = 'uploads/'+movie.poster)}}" alt="" style="width: 100%; display: block; margin: auto;">
+                </div>
             </div>
-            <div id="feature-card-slider" class="feature-card-sec">
-                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="{{url_for('static' , filename = 'uploads/'+movie.landscape)}}" class="d-block w-100" alt="...">
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div>
-            </div>
-            <div id="feature-card-description" class="feature-card-sec">
-                <div id="description"> <p>
+            <div class="feature-card-right">
+                <div id="movie-name"><h1>{{movie.name}}</h1></div>
+                <div id="release-year">{{movie.release_year}}</div>
+                <div id="genre">
+                    <h3>Genre : {{movie.genre.capitalize()}}</h3>
+                </div>
+                <div id="description">
                     {{movie.description}}
-                </p></div>
+                    <p><strong></strong></p>
+                </div>
                 <div id="cast">
                     <h3>Cast : </h3>
                     <p><strong>{{movie.cast}}</strong></p>
                 </div>
-                <div id="add-to-watchlist">
-                    <h3><a href="">Add to watchlist <i class="fa-solid fa-film" style="color: #ff0000;"></i></a></h3>
-                </div>
+                <p> 
+                    <strong>IMDB Rating : <i class="fa-solid fa-star" style="color: #ff0000;"></i> {{movie.imdb_rating}}/10</strong>
+                </p>
+                <p>
+                    <strong>Your Rating : <a href=""><i class="fa-solid fa-star" style="color: #ff0000;"></i> Rate</a></strong>
+                </p>
+                <button class="btn-grad">
+                    <a href="">Add to watchlist <i class="fa-solid fa-film" style="color: #ff0000;"></i></a>
+                </button>
+
             </div>
         </div>
+    </div>
+    <div id="feature-card-additional">
+        <div class="feature-card-additional-sec">
+            <h3 class="text-center">Additional Images </h3>
+            <div class="additional-images">
+                <img src="{{url_for('static' , filename = 'uploads/'+movie.landscape)}}" alt="" style="width: 100%; display: block; margin: auto;">
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

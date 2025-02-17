@@ -4,157 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieHive</title>
-    <style>
-        body{
-            margin: 0;
-            padding: 0;
-        }
-        div#mainContainer{
-            display: flex;
-            flex-direction: row;
-            width: 90%;
-            gap: 2%;
-            margin: auto;
-            margin-top: 3%;
-        }
-        div#mainContainer h1{
-            font-family: "cc-thismanthismonster-var", sans-serif;
-            font-variation-settings: "BITE" 0, "WONK" 0, "CHEW" 0;
-        }
-        div.mainsecs:first-of-type{
-            width: 40%;
-            /* border: 2px solid brown; */
-        }
-        div.mainsecs{
-            width: 60%;
-            /* border: 2px solid brown; */
-        }
-        h1#mainsec-heading{
-            font-size: 80px;
-        }
-        #main-sec-title{
-            color: red;
-        }
-        #main-sec-image{
-            display: block;
-            margin: auto;
-            width: 100%;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-        }
-        #main-sec-image{
-            display: block;
-            margin: auto;
-            height: 500px;
-        }
-                /* Movie Carousel */
-        .movie-carousel {
-            padding: 5rem 0;
-            background-color: var(--bg-gray);
-            overflow: hidden;
-        }
-
-        .carousel-container {
-            width: 100%;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 2rem;
-            animation: scroll 30s linear infinite;
-        }
-
-        .carousel-card {
-            flex: 0 0 300px;
-            background: var(--bg-light);
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .carousel-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .carousel-content {
-            padding: 1.5rem;
-        }
-
-        .carousel-content h3 {
-            color: var(--text-dark);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .carousel-content p {
-            color: var(--text-gray);
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(calc(-300px * 4 - 8rem));
-            }
-        }
-        /* Features Section */
-        .features {
-            padding: 5rem 0;
-            background-color: var(--primary-color);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-white);
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background-color: var(--bg-dark-blue);
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2); /* Gold Glow */
-        }
-
-        .feature-icon {
-            color: var(--accent-gold);
-            margin-bottom: 1.5rem;
-        }
-
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-white);
-        }
-
-        .feature-card p {
-            color: var(--text-light-gray);}
-    </style>
+    <link rel="stylesheet" href="{{url_for('static' , filename  = '/css/index.css')}}">
 </head>
 <body>
     {%extends 'base.html'%}
@@ -166,7 +16,7 @@
                 <p><strong>your ultimate movie database! Explore thousands of films, from classics to new releases, with ratings, reviews, and recommendations. Your cinematic journey starts here!🎬🍿</strong></p>
             </div>
             <div class="mainsecs">
-                <img src="{{url_for('static', filename = 'images/index-image.jpeg')}}" id="main-sec-image" alt="">
+                <img src="{{url_for('static', filename = 'images/'+image)}}" id="main-sec-image" alt="" style="border-radius: 10px;">
             </div>
         </div>
 
@@ -176,28 +26,29 @@
                 <div class="carousel-container fade-in">
                     <div class="carousel-track">
                         <div class="carousel-card">
-                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Movie 1">
+                            <img src="{{url_for('static' , filename = 'images/inception-landscape.jpg')}}" alt="Movie 1">
                             <div class="carousel-content">
                                 <h3>Inception</h3>
                                 <p>Sci-Fi/Action</p>
                             </div>
                         </div>
                         <div class="carousel-card">
-                            <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Movie 2">
+                            <img src="{{url_for('static' , filename = 'images/dark-knight-landscape.jpg')}}" alt="Movie 2">
+
                             <div class="carousel-content">
                                 <h3>The Dark Knight</h3>
                                 <p>Action/Drama</p>
                             </div>
                         </div>
                         <div class="carousel-card">
-                            <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Movie 3">
+                            <img src="{{url_for('static' , filename = 'images/interstellar-landscape.jpg')}}" alt="Movie 3">
                             <div class="carousel-content">
                                 <h3>Interstellar</h3>
                                 <p>Sci-Fi/Adventure</p>
                             </div>
                         </div>
                         <div class="carousel-card">
-                            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Movie 4">
+                            <img src="{{url_for('static' , filename = 'images/' +'pulp-fiction-landscape.jpg')}}" alt="Movie 4">
                             <div class="carousel-content">
                                 <h3>Pulp Fiction</h3>
                                 <p>Crime/Drama</p>

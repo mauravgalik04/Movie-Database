@@ -1,0 +1,86 @@
+#movie-con{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+h3{
+    text-align: center;
+}
+#small-card{
+    border: 1px solid black;
+    width: 90%;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-bottom: 2%;
+    height: 210px;
+    color: whitesmoke;
+    border-radius: 20px;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.8) 100%);
+}
+#small-card-image{
+    width: 20%;
+    
+}
+#small-card-info{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    /* border: 2px solid red; */
+}
+.info-secs{
+    height: 50%;
+}
+#small-card-misc{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+} 
+
+.btn-grad2 {background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%)}
+ .btn-grad2 {
+    margin: 10px;
+    padding: 5px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    /* box-shadow: 0 0 20px #eee; */
+    border-radius: 10px;
+    display: block;
+  }
+
+  .btn-grad2:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+           
+.btn-grad {background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)}
+.btn-grad {
+    margin: 10px;
+    padding: 5px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    /* box-shadow: 0 0 20px #eee; */
+    border-radius: 10px;
+    display: block;
+}
+
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+.options-sec{
+    display: flex;
+    justify-content: flex-start;
+}
+ 
