@@ -15,16 +15,23 @@ nav#navbarHome{
     font-weight: 700;
     font-style: normal;
     margin-bottom: 0;
+    background: linear-gradient(90deg, #1c1c1c, #3d3d3d);
+
+}
+nav#navbarHome a{
+    color: white;
+}
+nav#navbarHome a:hover{
+    color: black;
 }
 .navbuttons{
     padding:0.5% 2%;
-}
-.navbuttons:hover{
-    background-color: black;
-}
-.navbuttons:hover a{
     color: white;
 }
+.navbuttons:hover{
+    background-color: red;
+}
+
 div#brandlogo:hover{
     background-color: none;
 }

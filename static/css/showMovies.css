@@ -19,6 +19,20 @@ h3{
     color: whitesmoke;
     border-radius: 20px;
     background-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.8) 100%);
+    /* animation: backtoposition 1s forwards;
+    animation-timeline: view(); */
+}
+@keyframes backtoposition {
+    0%{
+        transform: translateY(-1vh);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+#small-card:hover{
+    transform: scale(1.02);
+    transition: transform 0.2s;
 }
 #small-card-image{
     width: 20%;
@@ -60,27 +74,29 @@ h3{
     text-decoration: none;
   }
            
-.btn-grad {background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)}
-.btn-grad {
-    margin: 10px;
-    padding: 5px 25px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    /* box-shadow: 0 0 20px #eee; */
-    border-radius: 10px;
-    display: block;
-}
-
-.btn-grad:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-}
 .options-sec{
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
-}
+} 
+
+.btn-grad {background-image: linear-gradient(to right, #ee0979 0%, #ff6a00  51%, #ee0979  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 5px 15px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: rgb(3, 3, 3);            
+   border-radius: 10px;
+   display: block;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
  

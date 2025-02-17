@@ -15,12 +15,20 @@ div#mainContainer h1{
     font-variation-settings: "BITE" 0, "WONK" 0, "CHEW" 0;
 }
 div.mainsecs:first-of-type{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     width: 40%;
     /* border: 2px solid brown; */
 }
 div.mainsecs{
     width: 60%;
     /* border: 2px solid brown; */
+}
+div.mainsecs img:hover{
+    transform: scale(1.02);
+    transition: transform 0.2s;
 }
 h1#mainsec-heading{
     font-size: 80px;
@@ -55,7 +63,7 @@ h1#mainsec-heading{
 .carousel-track {
     display: flex;
     gap: 2rem;
-    animation: scroll 30s linear infinite;
+    animation: scroll 130s linear infinite;
 }
 
 .carousel-card {
