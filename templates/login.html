@@ -8,6 +8,20 @@
   <link rel="stylesheet" href="{{url_for('static' , filename = 'css/login.css')}}">
 </head>
 <body>
+  {% for category,messages in get_flashed_messages(with_categories=True) %}
+  <div
+    class="alert alert-{{category}} alert-dismissible fade show"
+    role="alert"
+  >
+    {{messages}}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  {%endfor%}
   <button class="btn-grad2"><a href="{{url_for('landing')}}">Go back</a></button>
   <div id="background">
     <img src="{{url_for('static'  , filename = 'images/'+image)}}" alt="">

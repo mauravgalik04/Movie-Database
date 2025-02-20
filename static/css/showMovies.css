@@ -15,7 +15,7 @@ h3{
     flex-direction: row;
     margin: auto;
     margin-bottom: 2%;
-    height: 210px;
+    /* height: 210px; */
     color: whitesmoke;
     border-radius: 20px;
     background-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.8) 100%);
@@ -36,6 +36,7 @@ h3{
 }
 #small-card-image{
     width: 20%;
+    object-fit: cover;
     
 }
 #small-card-info{

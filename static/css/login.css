@@ -1,6 +1,7 @@
 body{
     display: flex;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     background-image: url_for('static' , filename = 'images/'+image);
 }
@@ -103,4 +104,7 @@ color: white;
 background-position: right center; /* change the direction of the change here */
 color: #fff;
 text-decoration: none;
+}
+.alert{
+    z-index: 1000;
 }

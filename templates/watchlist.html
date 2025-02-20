@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genres</title>
+    <link rel="stylesheet" href="{{url_for('static' ,filename= 'css/watchlist.css')}}">
+</head>
+<body>
+    {%extends 'base.html'%}
+    {%block content%}
+    <div id="watchlist-con">
+    {% for movie in movies %}
+    {% if movie.watchlist=="yes"%}
+        <div class="watchlist-card">
+            <img src="{{url_for('static' , filename = 'images/'+ movie.poster)}}" alt="{{movie.name}}">
+            <div class="watchlist-content">
+                <h3>{{movie.name}}</h3>
+                <p>{{movie.genre}}</p>
+            </div>
+        </div>
+        {%endif%}
+        {%endfor%}
+    </div>
+    {%endblock%}
+</body>
+</html>

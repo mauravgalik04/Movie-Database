@@ -23,7 +23,7 @@
                 <a href="{{url_for('showMovies')}}"><h3>Movies</h3></a>
             </div>
             <div class="navbuttons">
-                <a href=""><h3>Genres</h3></a>
+                <a href="{{url_for('genre')}}"><h3>Genres</h3></a>
             </div>
             <div class="navbuttons">
                 <a href=""><h3>Top-Rated</h3></a>
@@ -37,7 +37,7 @@
             <div class="navbuttons">
                 <a href="{{url_for('profile')}}"><h3>Profile</h3></a>
             </div>
-            <div class="navbuttons">
+            <div class="navbuttons" >
                 <a href="{{url_for('logout')}}"><h3>Logout</h3></a>
             </div>
             {%else%}
@@ -47,7 +47,7 @@
             {%endif%}
         </nav>
     </header>
-    <main class="bg-light overflow-auto">
+    <main class=" overflow-auto">
         <!-- Flash Message Display -->
         {% for category,messages in get_flashed_messages(with_categories=True) %}
         <div
@@ -119,7 +119,7 @@
             
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <p class="text-muted mb-0">&copy; 2025 MovieHive. All rights reserved.</p>
+                    <p class="text-muted mb-0">&copy; 2025 MoooWe. All rights reserved.</p>
                 </div>
             </div>
         </div>

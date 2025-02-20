@@ -30,7 +30,7 @@
             <div class="card-sec" id="small-card-misc">
                 <div class="small-card-mis-sec mb-0"> <p>{{movie.description}}</p></div>
                 <div class="small-card-mis-sec ">
-                    <button class="btn-grad2"><a href="">Add to watchlist <i class="fa-solid fa-film" style="color: #ff0000;"></i></a></button>
+                    <button class="btn-grad2"><a href="{{url_for('watchlist' , sno = movie.sno)}}">Add to watchlist <i class="fa-solid fa-film" style="color: #ff0000;"></i></a></button>
                     <div class="options-sec"> 
                         <a href="{{url_for('featured_movie' , sno=movie.sno)}}"><button class="btn-grad">See more</button></a>
                         {%if current_user.role == "admin"%}

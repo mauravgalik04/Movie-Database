@@ -1,6 +1,7 @@
 body{
     display: flex;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
 }
 .register-container {
@@ -89,4 +90,7 @@ color: white;
 background-position: right center; /* change the direction of the change here */
 color: #fff;
 text-decoration: none;
+}
+.alert{
+  z-index: 1000;
 }

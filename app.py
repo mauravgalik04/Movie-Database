@@ -34,7 +34,7 @@ class Movie(db.Model , UserMixin):
     cast = db.Column(db.String(100) )
     poster = db.Column(db.String(2000) )
     landscape = db.Column(db.String(2000) )
-
+    watchlist = db.Column(db.String , default = "no")
 class User(db.Model , UserMixin):
     __tablename__ = "users"
     id = db.Column(db.Integer , primary_key = True)
@@ -221,8 +221,19 @@ user_data = {
         },
     ],
 }
-
-
+@app.route('/genres')
+def genre():
+    genres = ['Action' , 'Adventure' , 'Biography' , 'Romance' , 'Comedy' , 'Drama' , 'Thriller' , 'Sci-Fi' , 'Crime' , 'Horror' , 'Other']
+    movies = Movie.query.all()
+    return render_template('genre.html' , movies = movies , genres = genres)
+@app.route('/watchlist<int:sno>')
+def watchlist(sno):
+    movies = Movie.query.all()
+    for movie in movies:
+        if movie.sno == sno:
+            movie.watchlist = "yes"
+            return redirect(url_for('watchlist'))
+    return render_template('watchlist.html' , movies = movies )    
 
 
 @app.route("/profile") 

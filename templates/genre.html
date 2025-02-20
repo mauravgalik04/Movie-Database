@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genres</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/genre.css')}}">
+</head>
+<body>
+    {%extends 'base.html'%}
+    {%block content%}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #181818;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h2 {
+            color: rgb(255, 255, 255);
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .movie-slider {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 90%;
+            margin: auto;
+        }
+
+        .movie-container {
+            display: flex;
+            gap: 15px;
+            overflow: hidden;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 30px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .arrow:hover {
+            color: #f5c518;
+        }
+
+        .left-arrow {
+            left: -40px;
+        }
+
+        .right-arrow {
+            right: -40px;
+        }
+        .movie-card {
+            position: relative;
+            display: inline-block;
+            width: calc(100% / 5 - 15px);
+            height: 380px;
+            background-color: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            text-align: center;
+            }
+
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .movie-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .movie-card:hover .movie-overlay {
+            opacity: 1;
+        }
+
+        .movie-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .movie-overlay h3 {
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 10px;
+            color: white;
+        }
+    </style>
+    <script>
+        function scrollMovies(container, direction) {
+            let scrollAmount = container.querySelector('.movie-box').offsetWidth + 15;
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+    </script>
+</head>
+<body>
+    {%for genre in genres%}
+    <div class="section-header">
+        <h2>{{genre}}</h2>
+        <a href="" class=" btn-grad">View All</a></div>
+        <div class="movie-slider" id="movie-carousel">
+            <button class="arrow left-arrow" onclick="scrollMovies(document.querySelector('.watchlist-container'), -1)">&#9665;</button>
+            <div class="movie-container watchlist-container" id="movie-pane">
+        {% for movie in movies%}
+            {% if movie.genre == genre%}
+            <div class="movie-card">
+                <img src="{{ url_for('static', filename='uploads/'+movie.poster) }}" alt="{{ movie.title }}">
+                <div class="movie-overlay">
+                    <a href="{{url_for('featured_movie' , sno=movie.sno)}}"><h3>{{ movie.name }}</h3></a>
+                </div>
+            </div>
+            {%endif%}
+        {%endfor%}
+        </div>
+        <button class="arrow right-arrow" onclick="scrollMovies(document.querySelector('.watchlist-container'), 1)">&#9655;</button>
+    </div>
+    {%endfor%}
+</body>
+</html>
+    {%endblock%}
+</body>
+</html>
