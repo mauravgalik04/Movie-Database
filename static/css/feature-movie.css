@@ -31,6 +31,16 @@
     flex-direction: column;
     width: 75%;
 }
+#movie-name{
+    font-family: caecilia, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+#description{
+    font-family: caecilia, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
 #feature-card-additional{
     width: 80%;
     margin: auto;

@@ -235,6 +235,10 @@ body {
     background: var(--color-success);
     color: white;
 }
+.badge.admin {
+    background-color: black;
+    color: white;
+}
 
 .tagline {
     color: var(--color-text-light);

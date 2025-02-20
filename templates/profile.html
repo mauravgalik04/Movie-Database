@@ -33,12 +33,17 @@
                 </div>
                 <div class="profile-headline">
                     <div class="headline-main">
-                        <h1>{{ user.name }}</h1>
+                        <h1>{{user.name }}</h1>
                         <div class="badges">
                             <span class="badge critic">Top Critic</span>
                             <span class="badge verified">
                                 <i class="fas fa-check"></i> Verified
                             </span>
+                            {% if current_user.role=='admin'%}
+                            <span class="badge admin">
+                                <i class="fas fa-check"></i> ADMIN
+                            </span>
+                            {%endif%}
                         </div>
                     </div>
                     <p class="tagline">{{ user.tagline }}</p>
